@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
-import 'Homepage.dart';
+import 'home_page.dart'; // Import the HomePage class
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: FirstPage(), // Use FirstPage as the home screen
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: const FirstPage(),
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
+
+  @override
+  _FirstPageState createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +37,7 @@ class FirstPage extends StatelessWidget {
               // Logo
               SizedBox(
                 height: 200,
-                child: Image.asset('logomo.png'),
-              ),
-              const SizedBox(height: 20.0),
-
-              // Text elements
-              const Text(
-                'Remember',
-                style: TextStyle(fontSize: 16.0),
+                child: Image.asset('images/logomo.png'),
               ),
               const SizedBox(height: 20.0),
 
@@ -73,14 +74,21 @@ class FirstPage extends StatelessWidget {
                   Row(
                     children: [
                       Checkbox(
-                        value: false,
-                        onChanged: (value) {},
+                        value: rememberMe,
+                        onChanged: (value) {
+                          setState(() {
+                            rememberMe = value!;
+                          });
+                        },
                       ),
                       const Text('Remember Me'),
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Handle forgot password button press here
+                      // You can navigate to a forgot password screen or perform any other action
+                    },
                     child: const Text('Forgot Password?'),
                   ),
                 ],
@@ -88,12 +96,12 @@ class FirstPage extends StatelessWidget {
 
               const SizedBox(height: 20.0),
 
-              // Sign Up button with navigation to the second page
+              // Sign In button with navigation to the second page
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Homepage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()), // Navigate to HomePage
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -101,7 +109,7 @@ class FirstPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: const Text("Sign Up"),
+                child: const Text("Sign In"),
               ),
 
               const SizedBox(height: 10.0),
@@ -110,11 +118,10 @@ class FirstPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already have an account?'), // Changed text
+                  const Text("Don't have an account?"), // Changed text
                   TextButton(
                     onPressed: () {},
-                    child: const Text(
-                        'Sign In'), // Changed button text to "Sign In"
+                    child: const Text('Sign Up'), // Changed button text to "Sign In"
                   ),
                 ],
               ),
