@@ -101,7 +101,9 @@ class _FirstPageState extends State<FirstPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()), // Navigate to HomePage
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const HomePage()), // Navigate to HomePage
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -121,7 +123,8 @@ class _FirstPageState extends State<FirstPage> {
                   const Text("Don't have an account?"), // Changed text
                   TextButton(
                     onPressed: () {},
-                    child: const Text('Sign Up'), // Changed button text to "Sign In"
+                    child: const Text(
+                        'Sign Up'), // Changed button text to "Sign In"
                   ),
                 ],
               ),
