@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart'; // Import the HomePage class
+import 'home_page.dart';
+import 'signup_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -19,7 +20,9 @@ class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
 
   @override
-  _FirstPageState createState() => _FirstPageState();
+  _FirstPageState createState() {
+    return _FirstPageState();
+  }
 }
 
 class _FirstPageState extends State<FirstPage> {
@@ -35,11 +38,25 @@ class _FirstPageState extends State<FirstPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Logo
-              SizedBox(
-                height: 200,
-                child: Image.asset('images/logomo.png'),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0), // Adjust the value as needed
+                child: SizedBox(
+                  height: 200,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.white, // Border color
+                        width: 4.0, // Border width
+                      ),
+                    ),
+                    child: ClipOval(
+                      child: Image.asset('images/logomo.png'),
+                    ),
+                  ),
+                ),
               ),
-              const SizedBox(height: 20.0),
+
 
               // Email and password fields
               TextField(
@@ -101,7 +118,9 @@ class _FirstPageState extends State<FirstPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()), // Navigate to HomePage
+                    MaterialPageRoute(
+                        builder: (context) =>
+                        const HomePage()), // Navigate to HomePage
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -120,9 +139,15 @@ class _FirstPageState extends State<FirstPage> {
                 children: [
                   const Text("Don't have an account?"), // Changed text
                   TextButton(
-                    onPressed: () {},
-                    child: const Text('Sign Up'), // Changed button text to "Sign In"
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignUpPage()),
+                      );
+                    },
+                    child: const Text('Sign Up'),
                   ),
+
                 ],
               ),
             ],

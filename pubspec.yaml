@@ -36,6 +36,8 @@ dependencies:
   cloud_firestore: ^4.17.3
   firebase_auth: ^4.19.5
   firebase_storage: ^11.7.5
+  web: 0.5.1
+
 
 cupertino_icons: ^0.1.2
 english_words: ^3.1.0
